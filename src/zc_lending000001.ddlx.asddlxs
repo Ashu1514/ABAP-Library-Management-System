@@ -1,0 +1,126 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'LendingID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'LendingID'
+annotate view ZC_LENDING000001 with
+{
+  @EndUserText.label: 'LendingID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'LendingID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'LendingID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  @UI.hidden: true
+  LendingID;
+  
+  @EndUserText.label: 'Book'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Book'
+  } ]
+  @UI.lineItem: [ {
+    hidden: true
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  CopyID;
+  
+  @EndUserText.label: 'User'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'User Name'
+  } ]
+  @UI.lineItem: [ {
+    hidden: true
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  UserID;
+  
+  @EndUserText.label: 'Borrowed Date'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Borrowed Date'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Borrowed Date'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  BorrowDate;
+  
+  @EndUserText.label: 'Return Due Date'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Return Due Date'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Return Due Date'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  DueDate;
+  
+  @EndUserText.label: 'Returned Date'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Returned Date'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'Returned Date'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  ReturnDate;
+  
+  @EndUserText.label: 'Late Fees'
+  @UI.identification: [ {
+    position: 80 , 
+    label: 'Late Fees'
+  } ]
+  @UI.lineItem: [ {
+    position: 80 , 
+    label: 'Late Fees'
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  LateFee;
+  
+  @UI.hidden: true
+  CreatedBy;
+  
+  @UI.hidden: true
+  CreatedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+  @UI.hidden: true
+  LastChangedAt;
+}

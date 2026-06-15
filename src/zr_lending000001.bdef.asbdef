@@ -1,0 +1,64 @@
+managed implementation in class ZBP_R_LENDING000001 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_LENDING000001 alias Lendings
+persistent table ZLENDING
+extensible
+draft table ZLENDING000_D001
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   LendingID,
+   CreatedBy,
+   CreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+   field ( mandatory )
+    UserID,
+    CopyID,
+    BorrowDate,
+    DueDate;
+
+  field ( numbering : managed )
+   LendingID;
+
+
+  create;
+  update;
+  delete;
+
+  validation validateLending on save { create; update; }
+  validation validateBorrowDate on save { create; update; field BorrowDate; }
+
+  determination setDueDate on modify {create; field BorrowDate; }
+  determination MarkCopyUnavailable on save { create; field CopyID; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZLENDING corresponding extensible
+  {
+    LendingID = LENDING_ID;
+    CopyID = COPY_ID;
+    UserID = USER_ID;
+    BorrowDate = BORROW_DATE;
+    DueDate = DUE_DATE;
+    ReturnDate = RETURN_DATE;
+    LateFee = LATE_FEE;
+    Currency = CURRENCY;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

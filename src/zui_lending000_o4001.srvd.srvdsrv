@@ -1,0 +1,14 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_LENDING000001'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_LENDING000001'
+  }
+}
+define service ZUI_LENDING000_O4001
+  provider contracts odata_v4_ui {
+  expose ZC_LENDING000001  as Lendings;
+  expose ZC_BOOKS1001      as Books;
+  expose ZC_BOOK_COPIES001 as Copies;
+}

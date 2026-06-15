@@ -1,0 +1,167 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'BookID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'BookID'
+annotate view ZC_BOOKS1001 with
+{
+  @EndUserText.label: 'BookID'
+  @UI.facet: [ {
+    label: 'Book Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'BookID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'BookID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  BookID;
+  
+  @EndUserText.label: 'AuthorID'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'AuthorID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'AuthorID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  AuthorID;
+  
+  @EndUserText.label: 'Isbn'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Isbn'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Isbn'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  Isbn;
+  
+  @EndUserText.label: 'Title'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Title'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Title'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  Title;
+  
+  @EndUserText.label: 'Genre'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Genre'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Genre'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Genre;
+  
+  @EndUserText.label: 'PublishYear'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'PublishYear'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'PublishYear'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  PublishYear;
+  
+  @EndUserText.label: 'PublisherName'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'PublisherName'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'PublisherName'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  PublisherName;
+  
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  @UI.lineItem: [ {
+    position: 80 
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  CreatedBy;
+  
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  @UI.lineItem: [ {
+    position: 90 
+  } ]
+  @UI.selectionField: [ {
+    position: 90 
+  } ]
+  CreatedAt;
+  
+  @UI.identification: [ {
+    position: 100 
+  } ]
+  @UI.lineItem: [ {
+    position: 100 
+  } ]
+  @UI.selectionField: [ {
+    position: 100 
+  } ]
+  LocalLastChangedBy;
+  
+  @UI.identification: [ {
+    position: 110 
+  } ]
+  @UI.lineItem: [ {
+    position: 110 
+  } ]
+  @UI.selectionField: [ {
+    position: 110 
+  } ]
+  LocalLastChangedAt;
+  
+  @UI.identification: [ {
+    position: 120 
+  } ]
+  @UI.lineItem: [ {
+    position: 120 
+  } ]
+  @UI.selectionField: [ {
+    position: 120 
+  } ]
+  LastChangedAt;
+}

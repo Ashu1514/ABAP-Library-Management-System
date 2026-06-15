@@ -1,0 +1,60 @@
+managed implementation in class ZBP_R_LIBRARY_USERS001 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_LIBRARY_USERS001 alias ZrLibraryUsers001
+persistent table ZLIBRARY_USERS
+extensible
+draft table ZLBRRY_USRS_D001
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   UserID,
+   CreatedBy,
+   CreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   UserID;
+
+
+  create;
+  update;
+  delete;
+  validation validateEmail on save {
+                                        create;
+                                        update;
+                                        field Email;
+                                      }
+  determination setmembershipstatus on modify {create;}
+
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare {
+  validation validateEmail;
+  }
+
+  mapping for ZLIBRARY_USERS corresponding extensible
+  {
+    UserID = USER_ID;
+    FullName = FULL_NAME;
+    Email = EMAIL;
+    Phone = PHONE;
+    Address = ADDRESS;
+    MembershipStatus = MEMBERSHIP_STATUS;
+    MembershipEndDate = MEMBERSHIP_END_DATE;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

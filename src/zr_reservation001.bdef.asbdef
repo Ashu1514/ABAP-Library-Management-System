@@ -1,0 +1,50 @@
+managed implementation in class ZBP_R_RESERVATION001 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_RESERVATION001 alias Reservations
+persistent table ZRESERVATION
+extensible
+draft table ZRSERVATION_D001
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   ReservationID,
+   CreatedBy,
+   CreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   ReservationID;
+
+
+  create;
+  update;
+  delete;
+
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZRESERVATION corresponding extensible
+  {
+    ReservationID = RESERVATION_ID;
+    CopyID = COPY_ID;
+    UserID = USER_ID;
+    ReservationDate = RESERVATION_DATE;
+    ExpiryDate = EXPIRY_DATE;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

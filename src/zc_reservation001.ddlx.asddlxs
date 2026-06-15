@@ -1,0 +1,100 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'ReservationID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'ReservationID'
+annotate view ZC_RESERVATION001 with
+{
+  @EndUserText.label: 'ReservationID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'ReservationID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'ReservationID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  @UI.hidden: true
+  ReservationID;
+  
+  @EndUserText.label: 'CopyID'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'CopyID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'CopyID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  CopyID;
+  
+  @EndUserText.label: 'UserID'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'UserID'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'UserID'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  UserID;
+  
+  @EndUserText.label: 'Reservation Date'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Reservation Date'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Reservation Date'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  ReservationDate;
+  
+  @EndUserText.label: 'Expiry Date'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Expiry Date'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Expiry Date'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  ExpiryDate;
+  
+  @UI.hidden: true
+  CreatedBy;
+  
+  @UI.hidden: true
+  CreatedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+  @UI.hidden: true
+  LastChangedAt;
+}

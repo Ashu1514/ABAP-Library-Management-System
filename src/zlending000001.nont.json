@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "SAP Object Node Type ZLENDING000001",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "name": "ZLENDING000001",
+  "sapObjectType": "ZLENDING000001",
+  "rootNode": true
+}

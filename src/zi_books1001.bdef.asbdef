@@ -1,0 +1,57 @@
+managed implementation in class ZBP_R_BOOKS1001 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZI_BOOKS1001 alias ZiBooks1001
+persistent table ZBOOKS1
+extensible
+draft table ZBOOKS1_D001
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   BookID,
+   CreatedBy,
+   CreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   BookID;
+
+
+  create;
+  update;
+  delete;
+
+  determination det_set_publish_year on modify
+    { create; }
+
+  validation val_isbn on save
+    { field Isbn; create; update; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZBOOKS1 corresponding extensible
+  {
+    BookID = BOOK_ID;
+    AuthorID = AUTHOR_ID;
+    Isbn = ISBN;
+    Title = TITLE;
+    Genre = GENRE;
+    PublishYear = PUBLISH_YEAR;
+    PublisherName = PUBLISHER_NAME;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

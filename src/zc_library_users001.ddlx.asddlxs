@@ -1,0 +1,124 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'UserID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'UserID'
+annotate view ZC_LIBRARY_USERS001 with
+{
+  @EndUserText.label: 'UserID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'UserID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'UserID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  UserID;
+  
+  @EndUserText.label: 'FullName'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'FullName'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'FullName'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  FullName;
+  
+  @EndUserText.label: 'Email'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Email'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Email'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  Email;
+  
+  @UI.identification: [ {
+    position: 40 
+  } ]
+  @UI.lineItem: [ {
+    position: 40 
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  Phone;
+  
+  @EndUserText.label: 'Address'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Address'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Address'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Address;
+  
+  @EndUserText.label: 'Member ship Status'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'MembershipStatus'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'MembershipStatus'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  MembershipStatus;
+  
+  @EndUserText.label: 'Member ship End Date'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'MembershipEndDate'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'MembershipEndDate'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  MembershipEndDate;
+  
+  @UI.hidden: true
+  CreatedBy;
+  
+  @UI.hidden: true
+  CreatedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+  @UI.hidden: true
+  LastChangedAt;
+}

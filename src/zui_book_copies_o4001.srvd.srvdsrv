@@ -1,0 +1,13 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_BOOK_COPIES001'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_BOOK_COPIES001'
+  }
+}
+define service ZUI_BOOK_COPIES_O4001
+  provider contracts odata_v4_ui {
+  expose ZC_BOOK_COPIES001;
+  expose ZC_BOOKS1001;
+}

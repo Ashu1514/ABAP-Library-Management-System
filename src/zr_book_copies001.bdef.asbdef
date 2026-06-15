@@ -1,0 +1,49 @@
+managed implementation in class ZBP_R_BOOK_COPIES001 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_BOOK_COPIES001 alias ZrBookCopies001
+persistent table ZBOOK_COPIES
+extensible
+draft table ZBOOK_CPIES_D001
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   CopyID,
+   CreatedBy,
+   CreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   CopyID;
+
+
+  create;
+  update;
+  delete;
+    determination setavailable on modify {create;}
+
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZBOOK_COPIES corresponding extensible
+  {
+    CopyID = COPY_ID;
+    BookID = BOOK_ID;
+    IsAvailable = IS_AVAILABLE;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

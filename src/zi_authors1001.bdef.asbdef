@@ -1,0 +1,56 @@
+managed implementation in class ZBP_R_AUTHORS1001 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZI_AUTHORS1001 alias ZiAuthors1001
+persistent table ZAUTHORS1
+extensible
+draft table ZAUTHORS1_D001
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   AuthorID,
+   DisplayName,
+   CreatedBy,
+   CreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   AuthorID;
+
+
+  create;
+  update;
+  delete;
+
+  determination det_full_name on modify
+    { field FirstName; field LastName; }
+
+  validation val_birth_year on save
+    { field BirthYear; create; update; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZAUTHORS1 corresponding extensible
+  {
+    AuthorID = AUTHOR_ID;
+    FirstName = FIRST_NAME;
+    LastName = LAST_NAME;
+    DisplayName = DISPLAY_NAME;
+    BirthYear = BIRTH_YEAR;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

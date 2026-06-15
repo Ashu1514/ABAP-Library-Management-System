@@ -1,0 +1,71 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'CopyID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'CopyID'
+annotate view ZC_BOOK_COPIES001 with
+{
+  @EndUserText.label: 'CopyID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'CopyID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'CopyID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  CopyID;
+  
+  @EndUserText.label: 'BookID'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'BookID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'BookID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  BookID;
+  
+  @EndUserText.label: 'IsAvailable'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'IsAvailable'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'IsAvailable'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  IsAvailable;
+  
+  @UI.hidden: true
+  CreatedBy;
+  
+  @UI.hidden: true
+  CreatedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+  @UI.hidden: true
+  LastChangedAt;
+}

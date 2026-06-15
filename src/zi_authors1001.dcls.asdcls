@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZI_AUTHORS1001'
+@MappingRole: true
+define role ZI_AUTHORS1001 {
+  grant select on ZI_AUTHORS1001
+  where TRUE;
+}
