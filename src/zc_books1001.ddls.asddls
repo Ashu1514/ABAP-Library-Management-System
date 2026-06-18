@@ -1,7 +1,7 @@
 @Metadata.allowExtensions: true
 @Metadata.ignorePropagatedAnnotations: true
 @AccessControl.authorizationCheck: #NOT_REQUIRED
-@EndUserText.label: 'Books - Projection View'
+@EndUserText.label: 'Library Books'
 
 define root view entity ZC_BOOKS1001
   provider contract transactional_query
@@ -15,7 +15,7 @@ define root view entity ZC_BOOKS1001
 @Consumption.valueHelpDefinition: [{
   entity: {
     name:    'ZVH_AUTHOR001',
-    element: 'AuthorId'
+    element: 'AuthorID'
   }
 }]
 @UI.lineItem:        [{ position: 10, label: 'Author' }]

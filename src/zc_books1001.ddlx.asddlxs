@@ -26,14 +26,14 @@ annotate view ZC_BOOKS1001 with
   } ]
   BookID;
   
-  @EndUserText.label: 'AuthorID'
+  @EndUserText.label: 'Author'
   @UI.identification: [ {
     position: 20 , 
-    label: 'AuthorID'
+    label: 'Author'
   } ]
   @UI.lineItem: [ {
     position: 20 , 
-    label: 'AuthorID'
+    label: 'Author'
   } ]
   @UI.selectionField: [ {
     position: 20 

@@ -12,11 +12,17 @@ authorization master( global )
 {
   field ( readonly )
    ReservationID,
+   ReservationDate,
+   ExpiryDate,
    CreatedBy,
    CreatedAt,
    LocalLastChangedBy,
    LocalLastChangedAt,
    LastChangedAt;
+
+  field ( mandatory )
+    UserID,
+    CopyID;
 
   field ( numbering : managed )
    ReservationID;
@@ -25,6 +31,12 @@ authorization master( global )
   create;
   update;
   delete;
+
+  validation validateReservation on save {create; update;}
+  validation validateReservationDate on save {create; update;}
+  validation checkExistingReservation on save {create; update;}
+
+  determination setExpiryDate on modify {create;}
 
 
   draft action Activate optimized;

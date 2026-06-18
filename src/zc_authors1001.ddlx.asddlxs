@@ -7,7 +7,7 @@ annotate view ZC_AUTHORS1001 with
 {
   @EndUserText.label: 'AuthorID'
   @UI.facet: [ {
-    label: 'General Information', 
+    label: 'Author Information', 
     id: 'GeneralInfo', 
     purpose: #STANDARD, 
     position: 10 , 
@@ -113,7 +113,7 @@ annotate view ZC_AUTHORS1001 with
   @UI.selectionField: [ {
     position: 80 
   } ]
-  LocalLastChangedBy;
+  locallastchangedby;
   
   @UI.identification: [ {
     position: 90 

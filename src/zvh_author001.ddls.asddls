@@ -8,7 +8,7 @@ define view entity ZVH_AUTHOR001
   as select from zauthors1
 {
   @EndUserText.label: 'Author'
-  key author_id    as AuthorId,
+  key author_id    as AuthorID,
 
       @Search.defaultSearchElement: true
       first_name   as FirstName,

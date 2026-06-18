@@ -1,7 +1,7 @@
 @Metadata.allowExtensions: true
 @Metadata.ignorePropagatedAnnotations: true
 @EndUserText: {
-  label: '###GENERATED Core Data Service Entity'
+  label: 'Book Copies'
 }
 @ObjectModel: {
   sapObjectNodeType.name: 'ZBOOK_COPIES001'
@@ -13,15 +13,21 @@ define root view entity ZC_BOOK_COPIES001
   association [1..1] to ZR_BOOK_COPIES001 as _BaseEntity on $projection.CopyID = _BaseEntity.CopyID
 {
   key CopyID,
-   @Consumption.valueHelpDefinition: [
-    {
-      entity: {
-        name: 'ZC_BOOKS1001',
-        element: 'BookID'
-      }
-    }
-  ]
-  BookID,
+  @ObjectModel.text.element: ['BookTitle'] 
+  @UI.textArrangement: #TEXT_ONLY 
+   @Consumption.valueHelpDefinition: [{
+  entity: {
+    name:    'ZVH_BOOKS001',
+    element: 'BookID'
+  }
+}]
+@UI.lineItem:   [{ position: 10, label: 'Book Title' }]
+@UI.fieldGroup: [{ qualifier: 'CopyDetails', position: 10, label: 'Book' }]
+BookID,
+
+
+@UI.hidden: true
+_Book.Title   as BookTitle,
   IsAvailable,
   @Semantics: {
     user.createdBy: true

@@ -27,28 +27,26 @@ annotate view ZC_RESERVATION001 with
   @UI.hidden: true
   ReservationID;
   
-  @EndUserText.label: 'CopyID'
+  @EndUserText.label: 'Book'
   @UI.identification: [ {
     position: 20 , 
-    label: 'CopyID'
+    label: 'Book'
   } ]
   @UI.lineItem: [ {
-    position: 20 , 
-    label: 'CopyID'
+    hidden: true
   } ]
   @UI.selectionField: [ {
     position: 20 
   } ]
   CopyID;
   
-  @EndUserText.label: 'UserID'
+  @EndUserText.label: 'User'
   @UI.identification: [ {
     position: 30 , 
-    label: 'UserID'
+    label: 'User'
   } ]
   @UI.lineItem: [ {
-    position: 30 , 
-    label: 'UserID'
+    hidden: true
   } ]
   @UI.selectionField: [ {
     position: 30 

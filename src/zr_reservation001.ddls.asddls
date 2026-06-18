@@ -3,7 +3,9 @@
 @ObjectModel.sapObjectNodeType.name: 'ZRESERVATION001'
 @EndUserText.label: '###GENERATED Core Data Service Entity'
 define root view entity ZR_RESERVATION001
-  as select from ZRESERVATION as Reservations
+  as select from zreservation as Reservations
+  association to ZR_BOOK_COPIES001 as _Copies on $projection.CopyID = _Copies.CopyID
+  association to ZR_LIBRARY_USERS001 as _User on $projection.UserID = _User.UserID
 {
   key reservation_id as ReservationID,
   copy_id as CopyID,
@@ -19,5 +21,7 @@ define root view entity ZR_RESERVATION001
   @Semantics.systemDateTime.localInstanceLastChangedAt: true
   local_last_changed_at as LocalLastChangedAt,
   @Semantics.systemDateTime.lastChangedAt: true
-  last_changed_at as LastChangedAt
+  last_changed_at as LastChangedAt,
+  _User,
+  _Copies
 }

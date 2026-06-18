@@ -30,6 +30,11 @@ authorization master( global )
                                         update;
                                         field Email;
                                       }
+  validation validateMembershipEndDate on save {
+                                        create;
+                                        update;
+                                        field MembershipEndDate;
+                                      }
   determination setmembershipstatus on modify {create;}
 
 

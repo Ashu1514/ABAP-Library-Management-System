@@ -1,7 +1,7 @@
 @Metadata.allowExtensions: true
 @Metadata.ignorePropagatedAnnotations: true
 @EndUserText: {
-  label: '###GENERATED Core Data Service Entity'
+  label: 'Book Authors'
 }
 @ObjectModel: {
   sapObjectNodeType.name: 'ZAUTHORS1001'

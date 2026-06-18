@@ -8,15 +8,7 @@ define root view entity ZR_LENDING000001
   association to ZR_LIBRARY_USERS001 as _User on $projection.UserID = _User.UserID
 {
   key lending_id as LendingID,
-  @Consumption.valueHelpDefinition: [ {
-    entity.name: 'ZR_BOOK_COPIES001', 
-    useForValidation: true
-  } ]
   copy_id as CopyID,
-  @Consumption.valueHelpDefinition: [ {
-    entity.name: 'ZR_LIBRARY_USERS001', 
-    useForValidation: true
-  } ]
   user_id as UserID,
   borrow_date as BorrowDate,
   due_date as DueDate,

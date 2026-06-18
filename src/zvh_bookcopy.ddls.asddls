@@ -12,6 +12,14 @@ define view entity ZVH_BOOKCOPY
 
     left outer join zauthors1 as Author
       on Book.author_id = Author.author_id
+      
+    left outer join zlending as Lending
+      on  Lending.copy_id = Copy.copy_id
+      and Lending.return_date = '00000000'
+
+    left outer join zreservation as Reservation
+      on  Reservation.copy_id = Copy.copy_id
+      and Reservation.expiry_date >= $session.system_date
 
 {
   @EndUserText.label: 'Copy ID'
@@ -36,3 +44,5 @@ define view entity ZVH_BOOKCOPY
   Author.display_name as AuthorName
 }
 where Copy.is_available = 'X'
+  and Lending.lending_id is null
+  and Reservation.reservation_id is null

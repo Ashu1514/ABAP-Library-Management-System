@@ -33,10 +33,11 @@ authorization master( global )
   delete;
 
   validation validateLending on save { create; update; }
-  validation validateBorrowDate on save { create; update; field BorrowDate; }
+  validation validateBorrowDate on save { create; field BorrowDate; }
+  validation checkCopyIdInReservation on save { create; field CopyID; }
+  validation checkUserStatus on save {create; update; field UserID;}
 
   determination setDueDate on modify {create; field BorrowDate; }
-  determination MarkCopyUnavailable on save { create; field CopyID; }
 
   draft action Activate optimized;
   draft action Discard;

@@ -1,16 +1,16 @@
 @Metadata.allowExtensions: true
 @Metadata.ignorePropagatedAnnotations: true
-@Endusertext: {
-  Label: '###GENERATED Core Data Service Entity'
+@EndUserText: {
+  label: 'Library Users'
 }
-@Objectmodel: {
-  Sapobjectnodetype.Name: 'ZLIBRARY_USERS001'
+@ObjectModel: {
+  sapObjectNodeType.name: 'ZLIBRARY_USERS001'
 }
 @AccessControl.authorizationCheck: #MANDATORY
 define root view entity ZC_LIBRARY_USERS001
-  provider contract TRANSACTIONAL_QUERY
+  provider contract transactional_query
   as projection on ZR_LIBRARY_USERS001
-  association [1..1] to ZR_LIBRARY_USERS001 as _BaseEntity on $projection.USERID = _BaseEntity.USERID
+  association [1..1] to ZR_LIBRARY_USERS001 as _BaseEntity on $projection.UserID = _BaseEntity.UserID
 {
   key UserID,
   FullName,
@@ -20,23 +20,23 @@ define root view entity ZC_LIBRARY_USERS001
   MembershipStatus,
   MembershipEndDate,
   @Semantics: {
-    User.Createdby: true
+    user.createdBy: true
   }
   CreatedBy,
   @Semantics: {
-    Systemdatetime.Createdat: true
+    systemDateTime.createdAt: true
   }
   CreatedAt,
   @Semantics: {
-    User.Localinstancelastchangedby: true
+    user.localInstanceLastChangedBy: true
   }
   LocalLastChangedBy,
   @Semantics: {
-    Systemdatetime.Localinstancelastchangedat: true
+    systemDateTime.localInstanceLastChangedAt: true
   }
   LocalLastChangedAt,
   @Semantics: {
-    Systemdatetime.Lastchangedat: true
+    systemDateTime.lastChangedAt: true
   }
   LastChangedAt,
   _BaseEntity

@@ -7,7 +7,7 @@ annotate view ZC_BOOK_COPIES001 with
 {
   @EndUserText.label: 'CopyID'
   @UI.facet: [ {
-    label: 'General Information', 
+    label: 'Book Copies Information', 
     id: 'GeneralInfo', 
     purpose: #STANDARD, 
     position: 10 , 
@@ -26,14 +26,14 @@ annotate view ZC_BOOK_COPIES001 with
   } ]
   CopyID;
   
-  @EndUserText.label: 'BookID'
+  @EndUserText.label: 'Book Title'
   @UI.identification: [ {
     position: 20 , 
-    label: 'BookID'
+    label: 'Book Title'
   } ]
   @UI.lineItem: [ {
     position: 20 , 
-    label: 'BookID'
+    label: 'Book Title'
   } ]
   @UI.selectionField: [ {
     position: 20 

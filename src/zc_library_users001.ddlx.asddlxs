@@ -7,7 +7,7 @@ annotate view ZC_LIBRARY_USERS001 with
 {
   @EndUserText.label: 'UserID'
   @UI.facet: [ {
-    label: 'General Information', 
+    label: 'Users Information', 
     id: 'GeneralInfo', 
     purpose: #STANDARD, 
     position: 10 , 

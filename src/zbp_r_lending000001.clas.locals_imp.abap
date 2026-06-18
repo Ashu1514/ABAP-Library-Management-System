@@ -11,8 +11,10 @@ CLASS LHC_ZR_LENDING000001 DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
             IMPORTING keys FOR Lendings~validateLending,
       validateBorrowDate FOR VALIDATE ON SAVE
             IMPORTING keys FOR Lendings~validateBorrowDate,
-      MarkCopyUnavailable FOR DETERMINE ON SAVE
-            IMPORTING keys FOR Lendings~MarkCopyUnavailable.
+      checkCopyIdInReservation FOR VALIDATE ON SAVE
+            IMPORTING keys FOR Lendings~checkCopyIdInReservation,
+      checkUserStatus FOR VALIDATE ON SAVE
+            IMPORTING keys FOR Lendings~checkUserStatus.
 ENDCLASS.
 
 CLASS LHC_ZR_LENDING000001 IMPLEMENTATION.
@@ -179,7 +181,110 @@ CLASS LHC_ZR_LENDING000001 IMPLEMENTATION.
 
 ENDMETHOD.
 
-  METHOD MarkCopyUnavailable.
+
+  METHOD checkCopyIdInReservation.
+
+READ ENTITIES OF zr_lending000001 IN LOCAL MODE
+  ENTITY Lendings
+  FIELDS ( CopyID )
+  WITH CORRESPONDING #( keys )
+  RESULT DATA(lt_lendings).
+
+LOOP AT lt_lendings ASSIGNING FIELD-SYMBOL(<lending>).
+
+  " Check if copy is already reserved
+  SELECT SINGLE user_id, expiry_date
+    FROM zreservation
+    WHERE copy_id = @<lending>-CopyID
+    INTO @DATA(ls_reservation).
+
+  IF sy-subrc = 0.
+
+  " Same user who made the reservation -> allow
+  IF ls_reservation-user_id = <lending>-UserID.
+    CONTINUE.
+  ENDIF.
+
+  SELECT SINGLE full_name
+    FROM zlibrary_users
+    WHERE user_id = @ls_reservation-user_id
+    INTO @DATA(lv_reserved_user_name).
+
+    APPEND VALUE #(
+      %tky = <lending>-%tky
+    ) TO failed-lendings.
+
+    APPEND VALUE #(
+      %tky = <lending>-%tky
+      %element-CopyID = if_abap_behv=>mk-on
+      %msg = new_message_with_text(
+        severity = if_abap_behv_message=>severity-error
+        text     = |Book copy is already reserved for { lv_reserved_user_name } till { ls_reservation-expiry_date }|
+      )
+    ) TO reported-lendings.
+
+  ENDIF.
+
+ENDLOOP.
   ENDMETHOD.
+
+ METHOD checkUserStatus.
+
+  DATA(lv_today) = cl_abap_context_info=>get_system_date( ).
+
+  READ ENTITIES OF zr_lending000001 IN LOCAL MODE
+    ENTITY Lendings
+    FIELDS ( UserID )
+    WITH CORRESPONDING #( keys )
+    RESULT DATA(lt_lendings).
+
+  LOOP AT lt_lendings ASSIGNING FIELD-SYMBOL(<lending>).
+
+    SELECT SINGLE membership_status,
+                  membership_end_date
+      FROM zlibrary_users
+      WHERE user_id = @<lending>-UserID
+      INTO @DATA(ls_user).
+
+    " Membership status check
+    IF ls_user-membership_status <> 'ACTIVE'.
+
+      APPEND VALUE #( %tky = <lending>-%tky )
+        TO failed-lendings.
+
+      APPEND VALUE #(
+        %tky            = <lending>-%tky
+        %element-UserID = if_abap_behv=>mk-on
+        %msg            = new_message_with_text(
+          severity = if_abap_behv_message=>severity-error
+          text     = |Only ACTIVE members can borrow books.|
+        )
+      ) TO reported-lendings.
+
+      CONTINUE.
+
+    ENDIF.
+
+    " Membership expiry check
+    IF ls_user-membership_end_date IS NOT INITIAL
+       AND ls_user-membership_end_date < lv_today.
+
+      APPEND VALUE #( %tky = <lending>-%tky )
+        TO failed-lendings.
+
+      APPEND VALUE #(
+        %tky            = <lending>-%tky
+        %element-UserID = if_abap_behv=>mk-on
+        %msg            = new_message_with_text(
+          severity = if_abap_behv_message=>severity-error
+          text     = |Membership expired on { ls_user-membership_end_date }. User cannot borrow books.|
+        )
+      ) TO reported-lendings.
+
+    ENDIF.
+
+  ENDLOOP.
+
+ENDMETHOD.
 
 ENDCLASS.

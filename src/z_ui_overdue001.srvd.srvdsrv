@@ -1,0 +1,4 @@
+@EndUserText.label: 'Overdue Report Service'
+define service Z_UI_OVERDUE001 {
+  expose ZC_OVERDUE_REPORT001 as OverdueReport;
+}

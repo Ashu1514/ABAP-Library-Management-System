@@ -7,7 +7,7 @@ annotate view ZC_LENDING000001 with
 {
   @EndUserText.label: 'LendingID'
   @UI.facet: [ {
-    label: 'General Information', 
+    label: 'Lending Information', 
     id: 'GeneralInfo', 
     purpose: #STANDARD, 
     position: 10 , 
